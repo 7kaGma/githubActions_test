@@ -2,16 +2,18 @@ name: Continuous Integration
 on: push
 
 jobs:
-  unit-test:
+  unit-test: #jobの名前
       name: Unit test
+      strategy: 
+        node: [18,19,20]
       runs-on: ubuntu-latest
       steps:
-        - name: Checkout
+        - name: Checkout #リポジトリをfetchしてラン上にクローンしてるイメージ
           uses: actions/checkout@v2.0.0
         - name: SetNode
           uses: actions/setup-node@v4
           with: 
-            node-version: 18
+            node-version: ${{matrix.nnode}}
         - name: Install dependencies
           run: npm ci
         - name: Test
