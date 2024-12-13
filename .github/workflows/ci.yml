@@ -5,7 +5,8 @@ jobs:
   unit-test: #jobの名前
       name: Unit test
       strategy: 
-        node: [18,19,20]
+        matrix:
+          node: [18,19,20]
       runs-on: ubuntu-latest
       steps:
         - name: Checkout #リポジトリをfetchしてラン上にクローンしてるイメージ
